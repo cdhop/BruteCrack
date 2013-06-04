@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<project name="BruteCrack" default="compile">
+	<description>A password brute force cracking program in Java</description>
+	<target name="clean" description="remove intermediate files">
+		<delete dir="classes"/>
+	</target>
+	<target name="clobber" depends="clean" description="remove all artifact files">
+		<delete file="BruteCrack.jar"/>
+	</target>
+	<target name="compile" description="compile the Java source code to class files">
+		<mkdir dir="classes"/>
+		<javac srcdir="." destdir="classes"/>
+	</target>
+	<target name="jar" depends="compile" description="create a Jar file for the application">
+		<jar destfile="BruteCrack.jar">
+			<fileset dir="classes" includes="**/*.class"/>
+			<manifest>
+				<attribute name="Main-Class" value="BruteCrack"/>
+			</manifest>
+		</jar>
+	</target>
+</project>
+
